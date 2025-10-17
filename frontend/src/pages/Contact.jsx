@@ -130,7 +130,7 @@ export default function Contact() {
                 <div>
                   <Label>Service souhaité *</Label>
                   <Select value={form.service} onValueChange={(v) => setForm((f) => ({ ...f, service: v }))}>
-                    <SelectTrigger>
+                    <SelectTrigger id="service-select" aria-label="Service souhaité" data-testid="service-select">
                       <SelectValue placeholder="Choisissez un service" />
                     </SelectTrigger>
                     <SelectContent>
