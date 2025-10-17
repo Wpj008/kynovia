@@ -1,0 +1,221 @@
+import React, { useMemo, useState } from "react";
+import Layout from "../components/Layout";
+import { site, services as servicesData } from "../mock/mock";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import { Label } from "../components/ui/label";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../components/ui/select";
+import { Checkbox } from "../components/ui/checkbox";
+import { Popover, PopoverTrigger, PopoverContent } from "../components/ui/popover";
+import { Calendar } from "../components/ui/calendar";
+import { useToast } from "../hooks/use-toast";
+import { Calendar as CalendarIcon, Paperclip, ShieldCheck } from "lucide-react";
+
+export default function Contact() {
+  const { toast } = useToast();
+  const [date, setDate] = useState();
+  const [file, setFile] = useState(null);
+  const [consent, setConsent] = useState(false);
+
+  const [form, setForm] = useState({
+    nom: "",
+    email: "",
+    tel: "",
+    entreprise: "",
+    service: "",
+    budget: "",
+    description: "",
+  });
+
+  const budgets = ["< 5k€", "5k€ – 20k€", "20k€ – 50k€", "> 50k€", "À définir"];
+
+  const canSubmit = useMemo(() => {
+    return (
+      form.nom && form.email && form.tel && form.service && consent
+    );
+  }, [form, consent]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!canSubmit) return;
+
+    // Préparation mailto (simulation d’envoi)
+    const subject = encodeURIComponent(`Demande de devis - ${form.nom}`);
+    const lines = [
+      `Nom: ${form.nom}`,
+      `Email: ${form.email}`,
+      `Téléphone: ${form.tel}`,
+      `Entreprise: ${form.entreprise || "-"}`,
+      `Service souhaité: ${form.service}`,
+      `Budget estimé: ${form.budget || "-"}`,
+      `Échéance: ${date ? new Date(date).toLocaleDateString("fr-FR") : "-"}`,
+      `Description: ${form.description || "-"}`,
+      file ? `Pièce jointe: ${file.name}` : "",
+    ].filter(Boolean);
+
+    const body = encodeURIComponent(lines.join("\n"));
+    const mailtoLink = `mailto:${site.email}?subject=${subject}&body=${body}`;
+
+    // Tente d’ouvrir le client mail, tout en affichant une confirmation UI
+    window.location.href = mailtoLink;
+    toast({
+      title: "Message prêt à être envoyé",
+      description: "Votre client mail s’ouvre avec le message prérempli.",
+    });
+  };
+
+  return (
+    <Layout>
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl font-semibold">Contact & Demande de devis</h1>
+          <p className="mt-3 text-muted-foreground">
+            Décrivez votre besoin, nous revenons vers vous sous 24–48h.
+          </p>
+        </div>
+
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Formulaire</CardTitle>
+            <CardDescription>Tous les champs marqués sont requis.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={onSubmit} className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <Label>Nom *</Label>
+                  <Input
+                    placeholder="Votre nom"
+                    value={form.nom}
+                    onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))}
+                    required
+                  />
+                </div>
+                <div>
+                  <Label>Email *</Label>
+                  <Input
+                    type="email"
+                    placeholder="you@company.com"
+                    value={form.email}
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                    required
+                  />
+                </div>
+                <div>
+                  <Label>Téléphone *</Label>
+                  <Input
+                    placeholder="+33 6 12 34 56 78"
+                    value={form.tel}
+                    onChange={(e) => setForm((f) => ({ ...f, tel: e.target.value }))}
+                    required
+                  />
+                </div>
+                <div>
+                  <Label>Entreprise</Label>
+                  <Input
+                    placeholder="Nom de votre entreprise"
+                    value={form.entreprise}
+                    onChange={(e) => setForm((f) => ({ ...f, entreprise: e.target.value }))}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <Label>Service souhaité *</Label>
+                  <Select value={form.service} onValueChange={(v) => setForm((f) => ({ ...f, service: v }))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Choisissez un service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {servicesData.map((s) => (
+                        <SelectItem key={s.id} value={s.title}>{s.title}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label>Budget estimé</Label>
+                  <Select value={form.budget} onValueChange={(v) => setForm((f) => ({ ...f, budget: v }))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionnez" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {budgets.map((b) => (
+                        <SelectItem key={b} value={b}>{b}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label>Échéance</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="w-full justify-start">
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {date ? new Date(date).toLocaleDateString("fr-FR") : "Choisir une date"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              </div>
+
+              <div>
+                <Label>Description du projet</Label>
+                <Textarea
+                  placeholder="Expliquez vos objectifs, le contexte, les contraintes…"
+                  value={form.description}
+                  onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
+                  rows={6}
+                />
+              </div>
+
+              <div>
+                <Label>Pièce jointe</Label>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="file"
+                    onChange={(e) => setFile(e.target.files?.[0] || null)}
+                  />
+                  {file && (
+                    <span className="text-sm text-muted-foreground flex items-center gap-2">
+                      <Paperclip size={16} /> {file.name}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Checkbox id="rgpd" checked={consent} onCheckedChange={(v) => setConsent(!!v)} />
+                <Label htmlFor="rgpd" className="text-sm leading-relaxed">
+                  J’accepte que {site.brand} traite ces données pour répondre à ma demande.
+                  <span className="block text-xs text-muted-foreground mt-1 flex items-center gap-1">
+                    <ShieldCheck size={14} /> Conformité RGPD — aucune donnée n’est stockée côté serveur.
+                  </span>
+                </Label>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Button type="submit" disabled={!canSubmit} style={{ backgroundColor: site.accent }}>
+                  Valider
+                </Button>
+                <Button type="button" variant="outline" asChild>
+                  <a href={`mailto:${site.email}`}>Écrire directement</a>
+                </Button>
+              </div>
+
+              <p className="text-sm text-muted-foreground">
+                Astuce: En cliquant sur « Valider », votre client mail s’ouvre avec un message prérempli adressé à {site.email}.
+              </p>
+            </form>
+          </CardContent>
+        </Card>
+      </section>
+    </Layout>
+  );
+}
