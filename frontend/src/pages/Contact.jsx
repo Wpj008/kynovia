@@ -85,8 +85,9 @@ export default function Contact() {
             <form onSubmit={onSubmit} className="grid grid-cols-1 gap-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <Label>Nom *</Label>
+                  <Label htmlFor="nom">Nom *</Label>
                   <Input
+                    id="nom"
                     placeholder="Votre nom"
                     value={form.nom}
                     onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))}
@@ -94,8 +95,9 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <Label>Email *</Label>
+                  <Label htmlFor="email">Email *</Label>
                   <Input
+                    id="email"
                     type="email"
                     placeholder="you@company.com"
                     value={form.email}
@@ -104,8 +106,9 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <Label>Téléphone *</Label>
+                  <Label htmlFor="tel">Téléphone *</Label>
                   <Input
+                    id="tel"
                     placeholder="+33 6 12 34 56 78"
                     value={form.tel}
                     onChange={(e) => setForm((f) => ({ ...f, tel: e.target.value }))}
@@ -113,8 +116,9 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <Label>Entreprise</Label>
+                  <Label htmlFor="entreprise">Entreprise</Label>
                   <Input
+                    id="entreprise"
                     placeholder="Nom de votre entreprise"
                     value={form.entreprise}
                     onChange={(e) => setForm((f) => ({ ...f, entreprise: e.target.value }))}
