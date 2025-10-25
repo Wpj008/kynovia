@@ -11,8 +11,10 @@ export function About() {
         <div className="max-w-3xl">
           <h1 className="text-3xl sm:text-4xl font-semibold">À propos</h1>
           <p className="mt-4 text-muted-foreground">
-            {site.brand} accompagne les organisations dans leur transformation digitale :
-            de la stratégie à l’exécution, avec un haut niveau d’exigence technique.
+            {site.brand} nous combinons expertise, écoute et innovation pour bâtir des solutions qui ont un véritable impact.
+             Nous ne nous contentons pas de livrer de la technologie :
+              nous vous accompagnons à chaque étape, avec un suivi personnalisé et des résultats mesurables. 
+              Notre objectif est simple : transformer vos enjeux en leviers de croissance durables.
           </p>
         </div>
 
@@ -21,7 +23,17 @@ export function About() {
             <CardHeader>
               <CardTitle>Notre mission</CardTitle>
               <CardDescription>
-                Construire des produits utiles, rapides et durables qui servent le business.
+              Accompagner les organisations dans leur transformation digitale grâce à des services sur mesure, 
+              performants et durables.
+
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Notre vision</CardTitle>
+              <CardDescription>
+              Offrir des solutions numériques innovantes qui façonnent l’avenir des entreprises.
               </CardDescription>
             </CardHeader>
           </Card>
@@ -37,7 +49,9 @@ export function About() {
             <CardHeader>
               <CardTitle>Notre approche</CardTitle>
               <CardDescription>
-                Cadrage rapide, itérations courtes, mesure continue.
+              Nous sommes reconnus pour notre expertise, notre réactivité 
+              et notre capacité à transformer les idées en solutions digitales concrètes. 
+              Chaque projet est mené avec rigueur, passion et engagement.
               </CardDescription>
             </CardHeader>
           </Card>
@@ -75,7 +89,8 @@ export function Team() {
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-3xl sm:text-4xl font-semibold">Rencontrez notre équipe</h1>
         <p className="mt-4 text-muted-foreground max-w-3xl">
-          Une équipe pluridisciplinaire passionnée par l’ingénierie logicielle, la data et l’expérience produit.
+        Derrière Kynovia Tech, il y a avant tout des personnes passionnées. 
+        Notre équipe d’experts réunit des compétences complémentaires, afin de vous offrir une approche globale et efficace.
         </p>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {fullTeam.map((m) => (

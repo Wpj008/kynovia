@@ -29,7 +29,7 @@ export default function Contact() {
     description: "",
   });
 
-  const budgets = ["< 5k€", "5k€ – 20k€", "20k€ – 50k€", "> 50k€", "À définir"];
+  const budgets = ["< 2k€", "2k€ – 5k€", "5k€ – 10k€", "> 10k€", "À définir"];
 
   const canSubmit = useMemo(() => {
     return (

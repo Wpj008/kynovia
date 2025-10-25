@@ -2,15 +2,16 @@
 // Modifiez librement ces données pour personnaliser le site sans backend
 
 export const site = {
-  brand: "Kynovia Tech",
+  brand: "KynoviaTech",
   tagline: "Transformation digitale, Data et Développement logiciel",
   accent: "#0EA5E9", // bleu cyan (choix client)
   email: "kynovia.tech@gmail.com",
   logoUrl:
     "https://customer-assets.emergentagent.com/job_c58cf50a-6439-4b95-9093-adeaac11e8cc/artifacts/fl1xgztk_Capture%20d%27%C3%A9cran%202025-05-22%20215409.png",
   socialLinks: {
-    linkedin: "https://www.linkedin.com/",
-    twitter: "https://x.com/",
+    linkedin: "https://www.linkedin.com/kynovia-tech",
+    twitter: "https://x.com/@Kynoviatech",
+    instagram: "https://instagram.com/kynovia_tech",
     github: "https://github.com/",
     website: "#",
   },
@@ -26,7 +27,7 @@ export const services = [
   {
     id: "data",
     title: "Data & IA",
-    desc: "Architecture data, dashboards, automatisation et IA appliquée.",
+    desc: "Transformez vos données en leviers de performance grâce à nos solutions de BI, de reporting et de Machine Learning.",
     icon: "Database",
   },
   {
@@ -113,22 +114,22 @@ export const founders = [
   {
     id: "f1",
     name: "Richard K.",
-    role: "Développeur Full‑Stack & Fondateur",
-    bio: "Architecte d’expériences web performantes et scalables.",
+    role: "Développeur Full‑Stack & Co-Fondateur",
+    bio: "Co-fondateur de Kynovia Tech, Richard est un expert en développement full-stack. Il conçoit et pilote les solutions digitales avec une vision globale et orientée résultat.",
     photo: "https://api.dicebear.com/7.x/initials/svg?seed=RK",
   },
   {
     id: "f2",
     name: "Priscille M.",
-    role: "Directrice d’Analyse et du Positionnement Stratégique",
-    bio: "Analyse, design d’offre et positionnement marché.",
+    role: "Directrice Stratégie & Data & Co-Fondatrice",
+    bio: "Data Analyst de formation, Priscille occupe le poste de Directrice Stratégie & Data . Elle allie rigueur analytique et vision business pour guider les décisions.",
     photo: "https://api.dicebear.com/7.x/initials/svg?seed=PM",
   },
   {
     id: "f3",
     name: "Ph. M.",
     role: "Développeur Back‑End & Co‑Fondateur",
-    bio: "APIs, data pipelines et fiabilité opérationnelle.",
+    bio: "Co-fondateur de Kynovia Tech, Philemon est spécialiste du développement back-end. Il assure la solidité, la sécurité et les performances de chaque solution déployée.",
     photo: "https://api.dicebear.com/7.x/initials/svg?seed=PHM",
   },
 ];

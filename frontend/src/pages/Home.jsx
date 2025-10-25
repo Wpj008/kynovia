@@ -54,7 +54,9 @@ export default function Home() {
         <div className="flex items-end justify-between">
           <div>
             <h2 className="text-2xl sm:text-3xl font-semibold">Nos services</h2>
-            <p className="text-muted-foreground mt-2">Nous allions stratégie, data et software pour délivrer de la valeur mesurable.</p>
+            <p className="text-muted-foreground mt-2">Kynovia Tech, votre partenaire technologique de confiance,
+               vous accompagne dans la conception, le développement et l’optimisation de solutions digitales innovantes,
+               pensées pour répondre à vos enjeux stratégiques et accélérer votre croissance.</p>
           </div>
           <Badge style={{ backgroundColor: site.accent }} className="text-white">Expertise senior</Badge>
         </div>
@@ -128,8 +130,8 @@ export default function Home() {
           <div className="flex items-end justify-between">
             <h2 className="text-2xl sm:text-3xl font-semibold">Fil d’actualité</h2>
             <Button asChild variant="ghost">
-              <a href={site.socialLinks.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2">
-                Suivre sur LinkedIn <ArrowRight size={18} />
+              <a href={site.socialLinks.twitter} target="_blank" rel="noreferrer" className="flex items-center gap-2">
+                Suivre sur Twitter <ArrowRight size={18} />
               </a>
             </Button>
           </div>

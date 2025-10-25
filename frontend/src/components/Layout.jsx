@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Separator } from "../components/ui/separator";
 import { site } from "../mock/mock";
-import { Github, Linkedin, Twitter, ChevronRight } from "lucide-react";
+import { Github, Linkedin, Twitter, ChevronRight, Instagram } from "lucide-react";
 import { Toaster } from "../components/ui/toaster";
 
 const navLinkClass = ({ isActive }) =>
@@ -114,6 +114,9 @@ export default function Layout({ children }) {
               </a>
               <a href={site.socialLinks.twitter} target="_blank" rel="noreferrer" aria-label="Twitter/X" className="hover:text-foreground">
                 <Twitter size={20} />
+              </a>
+              <a href={site.socialLinks.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-foreground">
+                <Instagram size={20} />
               </a>
               <a href={site.socialLinks.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-foreground">
                 <Github size={20} />
