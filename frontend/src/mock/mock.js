@@ -5,7 +5,7 @@ export const site = {
   brand: "KynoviaTech",
   tagline: "Transformation digitale, Data et Développement logiciel",
   accent: "#0EA5E9", // bleu cyan (choix client)
-  email: "kynovia.tech@gmail.com",
+  email: "contact@kynoviatech.com",
   logoUrl:
     "https://customer-assets.emergentagent.com/job_c58cf50a-6439-4b95-9093-adeaac11e8cc/artifacts/fl1xgztk_Capture%20d%27%C3%A9cran%202025-05-22%20215409.png",
   socialLinks: {
