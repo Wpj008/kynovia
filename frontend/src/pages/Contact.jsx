@@ -12,12 +12,15 @@ import { Popover, PopoverTrigger, PopoverContent } from "../components/ui/popove
 import { Calendar } from "../components/ui/calendar";
 import { useToast } from "../hooks/use-toast";
 import { Calendar as CalendarIcon, Paperclip, ShieldCheck } from "lucide-react";
+import axios from "axios";
+import HCaptcha from "@hcaptcha/react-hcaptcha"; 
 
 export default function Contact() {
   const { toast } = useToast();
   const [date, setDate] = useState();
   const [file, setFile] = useState(null);
   const [consent, setConsent] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState(null);//captcha token state
 
   const [form, setForm] = useState({
     nom: "",
@@ -33,38 +36,80 @@ export default function Contact() {
 
   const canSubmit = useMemo(() => {
     return (
-      form.nom && form.email && form.tel && form.service && consent
+      form.nom && form.email && form.tel && form.service && consent && captchaToken
     );
-  }, [form, consent]);
+  }, [form, consent, captchaToken]);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (!canSubmit) return;
+  //capture le token captcha
 
-    // Préparation mailto (simulation d’envoi)
-    const subject = encodeURIComponent(`Demande de devis - ${form.nom}`);
-    const lines = [
-      `Nom: ${form.nom}`,
-      `Email: ${form.email}`,
-      `Téléphone: ${form.tel}`,
-      `Entreprise: ${form.entreprise || "-"}`,
-      `Service souhaité: ${form.service}`,
-      `Budget estimé: ${form.budget || "-"}`,
-      `Échéance: ${date ? new Date(date).toLocaleDateString("fr-FR") : "-"}`,
-      `Description: ${form.description || "-"}`,
-      file ? `Pièce jointe: ${file.name}` : "",
-    ].filter(Boolean);
-
-    const body = encodeURIComponent(lines.join("\n"));
-    const mailtoLink = `mailto:${site.email}?subject=${subject}&body=${body}`;
-
-    // Tente d’ouvrir le client mail, tout en affichant une confirmation UI
-    window.location.href = mailtoLink;
-    toast({
-      title: "Message prêt à être envoyé",
-      description: "Votre client mail s’ouvre avec le message prérempli.",
-    });
+  const onHCaptchaChange = (token) => {
+    setCaptchaToken(token);
   };
+
+
+  // Début onSubmit Correctif apporté
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (!canSubmit) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez remplir tous les champs requis et  valider le captcha.",
+        variant: "destructive",
+      });
+      return;
+
+    }
+      
+
+    const formData = {
+      access_key: "85d1b3f5-d84b-42de-86f0-8fcb513bba11", 
+      name: form.nom,
+      email: form.email,
+      tel: form.tel,
+      entreprise: form.entreprise,
+      service: form.service,
+      budget: form.budget,
+      description: form.description,
+      date: date ? new Date(date).toLocaleDateString("fr-FR") : "",
+      subject: `Demande de devis - ${form.nom}`,
+      "h-captcha-response": captchaToken,
+      redirect: "",//le chemin de redirection après soumission
+        };
+
+    
+  try {
+    const response = await axios.post("https://api.web3forms.com/submit", formData);
+    if (response.data.success) {
+      toast({
+        title: "Message envoyé",
+        description: "Merci ! Votre demande a bien été envoyée.",
+      });
+      setForm({
+        nom: "",
+        email: "",
+        tel: "",
+        entreprise: "",
+        service: "",
+        budget: "",
+        description: "",
+      });
+      setDate(null);
+      setFile(null);
+      setConsent(false);
+      setCaptchaToken(null);
+    }
+  } catch (err) {
+    toast({
+      title: "Erreur",
+      description: "Une erreur est survenue lors de l'envoi du formulaire.",
+      variant: "destructive",
+    });
+  }
+
+ };
+
+// Fin onSubmit Correctif apporté
 
   return (
     <Layout>
@@ -193,6 +238,18 @@ export default function Contact() {
                   )}
                 </div>
               </div>
+
+              <div className="flex items-start gap-3">
+
+                <HCaptcha
+                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                  onVerify={onHCaptchaChange} 
+                />
+
+
+              </div>
+
+
 
               <div className="flex items-start gap-3">
                 <Checkbox id="rgpd" checked={consent} onCheckedChange={(v) => setConsent(!!v)} />

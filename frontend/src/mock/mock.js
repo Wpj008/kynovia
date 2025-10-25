@@ -127,7 +127,7 @@ export const founders = [
   },
   {
     id: "f3",
-    name: "Ph. M.",
+    name: "Philemon M.",
     role: "Développeur Back‑End & Co‑Fondateur",
     bio: "Co-fondateur de Kynovia Tech, Philemon est spécialiste du développement back-end. Il assure la solidité, la sécurité et les performances de chaque solution déployée.",
     photo: "https://api.dicebear.com/7.x/initials/svg?seed=PHM",
