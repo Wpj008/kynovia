@@ -29,7 +29,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">
-              {site.brand}: l’élégance dans chaque ligne de code
+              {site.brand} : l’élégance dans chaque ligne de code
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
               {site.tagline}. Nous concevons des produits utiles, rapides et durables,
