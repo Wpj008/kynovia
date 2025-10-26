@@ -6,6 +6,8 @@ export const site = {
   tagline: "Transformation digitale, Data et Développement logiciel",
   accent: "#0EA5E9", // bleu cyan (choix client)
   email: "contact@kynoviatech.com",
+  tel : "+33 6 68 46 69 95",
+  adress : "12 Rue de la Plaine, 75000 Paris, France",
   logoUrl:
     "https://customer-assets.emergentagent.com/job_c58cf50a-6439-4b95-9093-adeaac11e8cc/artifacts/fl1xgztk_Capture%20d%27%C3%A9cran%202025-05-22%20215409.png",
   socialLinks: {
@@ -139,35 +141,35 @@ export const teamPlaceholders = [
     id: "tp1",
     name: "Rosette S.",
     role: "Experte Comptable",
-    bio: "Rigoureuse et précise, elle assure la gestion comptable et financière de l’entreprise. Elle contrôle les budgets, élabore les bilans et conseille la direction sur la rentabilité et les choix fiscaux.",
+    bio: "Rigoureuse et précise, Rosette assure la gestion comptable et financière de l’entreprise. Elle contrôle les budgets, élabore les bilans et conseille la direction sur la rentabilité et les choix fiscaux.",
     photo: "/images/femme2.png",
   },
   {
     id: "tp2",
     name: "Stella K.",
     role: "Cheffe de projet",
-    bio: "Organisée et orientée résultats, elle supervise la mise en œuvre des projets informatiques, de la conception à la livraison. Elle coordonne les équipes techniques, assure la communication avec les clients et veille au respect des délais et des standards de qualité.",
+    bio: "Organisée et orientée résultats, Stella supervise la mise en œuvre des projets informatiques, de la conception à la livraison. Elle coordonne les équipes techniques, assure la communication avec les clients et veille au respect des délais et des standards de qualité.",
     photo: "/images/femme4.png",
   },
   {
     id: "tp3",
     name: "Amandine A.",
     role: "Responsable Marketing",
-    bio: "Créative et connectée, elle développe la visibilité et l’image de marque de l’entreprise dans le secteur numérique. Elle élabore les stratégies de communication, gère les campagnes digitales et met en valeur les solutions informatiques proposées.",
+    bio: "Créative et connectée, Amandine développe la visibilité et l’image de marque de l’entreprise dans le secteur numérique. Elle élabore les stratégies de communication, gère les campagnes digitales et met en valeur les solutions informatiques proposées.",
     photo: "/images/femme3.png",
   },
   {
     id: "tp4",
     name: "Lisa P.",
     role: "Responsable relation client",
-    bio: "Attentive et proactive, elle assure la coordination entre les clients et les équipes techniques. Elle identifie les besoins, accompagne la mise en œuvre des solutions informatiques et veille à la satisfaction de chaque partenaire.",
+    bio: "Attentive et proactive, Lisa assure la coordination entre les clients et les équipes techniques. Elle identifie les besoins, accompagne la mise en œuvre des solutions informatiques et veille à la satisfaction de chaque partenaire.",
     photo: "/images/femme5.png",
   },
   {
     id: "tp5",
     name: "Jenovic M.",
     role: "Ingénieur système et réseau",
-    bio: "Méthodique et passionné par les nouvelles technologies, il conçoit, administre et sécurise les infrastructures informatiques de l’entreprise et de ses clients. Il assure la performance des serveurs, la fiabilité du réseau et le bon fonctionnement des systèmes.",
+    bio: "Méthodique et passionné par les nouvelles technologies, Jenovic conçoit, administre et sécurise les infrastructures informatiques de l’entreprise et de ses clients. Il assure la performance des serveurs, la fiabilité du réseau et le bon fonctionnement des systèmes.",
     photo: "/images/homme1.png",
   },
 ];

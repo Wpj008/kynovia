@@ -5,6 +5,7 @@ import { Separator } from "../components/ui/separator";
 import { site } from "../mock/mock";
 import { Github, Linkedin, Twitter, ChevronRight, Instagram } from "lucide-react";
 import { Toaster } from "../components/ui/toaster";
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 const navLinkClass = ({ isActive }) =>
   `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -126,9 +127,44 @@ export default function Layout({ children }) {
           <Separator className="my-6" />
           <div className="text-sm text-muted-foreground flex flex-col sm:flex-row gap-2 sm:gap-6 justify-between">
             <p>© {new Date().getFullYear()} {site.brand}. Tous droits réservés.</p>
-            <p>
-              Contact: <a href={`mailto:${site.email}`} className="underline">{site.email}</a>
-            </p>
+            
+            <div className="flex sm:items-end gap-2">
+            <div className="flex sm:items-end gap-4">
+  {/* Colonne des icônes */}
+  <div className="flex flex-col items-center justify-center mr-3 space-y-3">
+    <MapPin className="h-5 w-5 text-gray-400" />
+    <Phone className="h-5 w-5 text-gray-400" />
+    <Mail className="h-5 w-5 text-gray-400" />
+  </div>
+
+  {/* Colonne des textes */}
+  <div className="flex flex-col space-y-3">
+    <a
+      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.adress)}`}
+      target="_blank"
+      rel="noreferrer"
+      className="transition-colors duration-200 hover:text-blue-500"
+    >
+      {site.adress}
+    </a>
+
+    <a
+      href={`tel:${site.tel}`}
+      className="transition-colors duration-200 hover:text-blue-500"
+    >
+      {site.tel}
+    </a>
+
+    <a
+      href={`mailto:${site.email}`}
+      className="transition-colors duration-200 hover:text-blue-500"
+    >
+      {site.email}
+    </a>
+  </div>
+</div>
+
+  </div>
           </div>
         </div>
       </footer>
