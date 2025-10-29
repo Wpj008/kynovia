@@ -42,16 +42,18 @@ export default function Contact() {
 
   //capture le token captcha
 
-  const onHCaptchaChange = (token) => {
+  /*const onHCaptchaChange = (token) => {
     setCaptchaToken(token);
-  };
+  };*/ 
+  
+  //Ce bout de code ci-haut est à decommenter pour activer le captcha
 
 
   // Début onSubmit Correctif apporté
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!canSubmit) {
+   /* if (!canSubmit) {
       toast({
         title: "Erreur",
         description: "Veuillez remplir tous les champs requis et  valider le captcha.",
@@ -59,7 +61,9 @@ export default function Contact() {
       });
       return;
 
-    }
+    }*/ 
+
+      //ce bout de code ci-haut est à decommenter pour activer la vérification du captcha
       
 
     const formData = {
@@ -241,11 +245,13 @@ export default function Contact() {
 
               <div className="flex items-start gap-3">
 
-                <HCaptcha
+               { /*<HCaptcha
                   sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                   onVerify={onHCaptchaChange} 
                 />
-
+                */
+                //Ce bout de code ci-haut est à decommenter pour activer le captcha et faut supprimer les accolades, et decommenter disabled={!canSubmit} dans le bouton valider plus bas
+                }
 
               </div>
 
@@ -262,7 +268,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-3">
-                <Button type="submit" disabled={!canSubmit} style={{ backgroundColor: site.accent }}>
+                <Button type="submit" /*disabled={!canSubmit} */style={{ backgroundColor: site.accent }}>
                   Valider
                 </Button>
                 <Button type="button" variant="outline" asChild>
