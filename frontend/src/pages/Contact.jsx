@@ -42,9 +42,9 @@ export default function Contact() {
 
   //capture le token captcha
 
-  /*const onHCaptchaChange = (token) => {
+  const onHCaptchaChange = (token) => {
     setCaptchaToken(token);
-  };*/ 
+  };
   
   //Ce bout de code ci-haut est à decommenter pour activer le captcha
 
@@ -53,7 +53,7 @@ export default function Contact() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-   /* if (!canSubmit) {
+    if (!canSubmit) {
       toast({
         title: "Erreur",
         description: "Veuillez remplir tous les champs requis et  valider le captcha.",
@@ -61,7 +61,7 @@ export default function Contact() {
       });
       return;
 
-    }*/ 
+    }
 
       //ce bout de code ci-haut est à decommenter pour activer la vérification du captcha
       
@@ -245,11 +245,11 @@ export default function Contact() {
 
               <div className="flex items-start gap-3">
 
-               { /*<HCaptcha
+               { <HCaptcha
                   sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                   onVerify={onHCaptchaChange} 
                 />
-                */
+                
                 //Ce bout de code ci-haut est à decommenter pour activer le captcha et faut supprimer les accolades, et decommenter disabled={!canSubmit} dans le bouton valider plus bas
                 }
 
