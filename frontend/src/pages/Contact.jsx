@@ -49,7 +49,7 @@ export default function Contact() {
   //Ce bout de code ci-haut est à decommenter pour activer le captcha
 
 
-  // Début onSubmit Correctif apporté
+  // Début onSubmit Correctif apporté dans le update
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -63,8 +63,7 @@ export default function Contact() {
 
     }
 
-      //ce bout de code ci-haut est à decommenter pour activer la vérification du captcha
-      
+
 
     const formData = {
       access_key: "85d1b3f5-d84b-42de-86f0-8fcb513bba11", 
@@ -113,7 +112,6 @@ export default function Contact() {
 
  };
 
-// Fin onSubmit Correctif apporté
 
   return (
     <Layout>
