@@ -46,8 +46,6 @@ export default function Contact() {
     setCaptchaToken(token);
   };
   
-  //Ce bout de code ci-haut est à decommenter pour activer le captcha
-
 
   // Début onSubmit Correctif apporté dans le update
 
@@ -66,7 +64,7 @@ export default function Contact() {
 
 
     const formData = {
-      access_key: "85d1b3f5-d84b-42de-86f0-8fcb513bba11", 
+      /*access_key: "85d1b3f5-d84b-42de-86f0-8fcb513bba11",*/ //Uniquement à utiliser pour web3form.io
       name: form.nom,
       email: form.email,
       tel: form.tel,
@@ -82,7 +80,7 @@ export default function Contact() {
 
     
   try {
-    const response = await axios.post("https://api.web3forms.com/submit", formData);
+    const response = await axios.post("https://formspree.io/f/mzzkjlan", formData);//Changer l'url pour utiliser web3form.io
     if (response.data.success) {
       toast({
         title: "Message envoyé",
@@ -244,11 +242,12 @@ export default function Contact() {
               <div className="flex items-start gap-3">
 
                { <HCaptcha
-                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                  /*sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"*/ //Uniquement à utiliser pour web3form.io
+                  sitekey="50a86b6a-0b94-4bf8-a0be-be82e794eff8"//pour formspree.io
                   onVerify={onHCaptchaChange} 
                 />
                 
-                //Ce bout de code ci-haut est à decommenter pour activer le captcha et faut supprimer les accolades, et decommenter disabled={!canSubmit} dans le bouton valider plus bas
+             
                 }
 
               </div>
